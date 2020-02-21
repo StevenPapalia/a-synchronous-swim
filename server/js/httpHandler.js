@@ -12,7 +12,8 @@ module.exports.initialize = (queue) => {
   messageQueue = queue;
 };
 
-module.exports.router = (req, res, next = ()=>{}) => {
+// fill in next so that it returns the message queue and invokes each message that it receives
+module.exports.router = (req, res, next = (messageQueue)=>{ console.log('hit' + ' ' + messageQueue); }) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
   res.writeHead(200, headers);
   res.end();
