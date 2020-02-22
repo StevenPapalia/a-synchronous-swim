@@ -13,7 +13,7 @@
 
   setInterval(function() {
     fetchSwimCommand();
-  }, 500);
+  }, 300);
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -30,8 +30,9 @@
       cache: false,
       contentType: false,
       processData: false,
-      success: () => {
+      success: (data) => {
         // reload the page
+        console.log(data);
         window.location = window.location.href;
       }
     });
