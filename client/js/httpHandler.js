@@ -5,21 +5,15 @@
   //
   // TODO: build the swim command fetcher here
   //
-  const fetchSwimCommand = (successCB, errorCB = null) => {
-    $.ajax({
-      url: serverUrl,
-      type: 'GET',
-      success: successCB,
-      error: errorCB || function(error) {
-        console.error('Failed to fetch swim command, lo siento', error);
-      }
-    });
-  };
+  var fetchSwimCommand = () => {
+    $.get(serverUrl, function(data) {
+    SwimTeam.move(data);
+  });
+};
 
-  // setInterval(function() {
-  //   fetchSwimCommand();
-  //   console.log('fetched');
-  // }, 3000);
+  setInterval(function() {
+    fetchSwimCommand();
+  }, 10000);
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
