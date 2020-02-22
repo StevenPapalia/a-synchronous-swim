@@ -17,6 +17,7 @@ const logKeypress = (key) => {
   // when not in raw mode, the terminal will do this for us
   if (process.stdin.isRaw) {
     process.stdout.write(key);
+    console.log('Key has been pressed!', key)
   }
 };
 
@@ -40,7 +41,7 @@ module.exports.initialize = (callback) => {
       callback(key.name);
       return; // don't do any more processing on this key
     }
-    
+
     // otherwise build up a message from individual characters
     if (key && (key.name === 'return' || key.name === 'enter')) {
       // on enter, process the message
